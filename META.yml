@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Geo-Distance-XS
-version:            0.02
+version:            0.03
 abstract:           speed up Geo::Distance
 author:
     - gray <gray@cpan.org>
