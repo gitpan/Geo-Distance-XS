@@ -3,7 +3,8 @@ package Geo::Distance::XS;
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
+$VERSION = eval $VERSION;
 
 eval {
     require XSLoader;
@@ -32,6 +33,7 @@ sub import {
     };
 
     *Geo::Distance::formula = sub {
+        local $Carp::CarpLevel = 1;
         $orig_formula_sub->(@_);
         *Geo::Distance::distance = \&{'_distance_' . $_[0]->{formula}};
     };
@@ -165,7 +167,7 @@ You can also look for information at:
 
 =item * GitHub Source Repository
 
-L<http://github.com/gray/geo-coder-xs>
+L<http://github.com/gray/geo-distance-xs>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 

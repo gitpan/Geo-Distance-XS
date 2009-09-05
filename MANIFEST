@@ -1,3 +1,4 @@
+.perlcriticrc
 Changes
 ex/benchmark.pl
 lib/Geo/Distance/XS.pm
@@ -9,6 +10,7 @@ t/00_load.t
 t/01_new.t
 XS.xs
 xt/kwalitee.t
+xt/perlcritic.t
 xt/pod.t
 xt/pod_coverage.t
 META.yml                                 Module meta-data (added by MakeMaker)
