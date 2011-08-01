@@ -3,19 +3,14 @@ package Geo::Distance::XS;
 use strict;
 use warnings;
 
-our $VERSION = '0.08';
+use Geo::Distance;
+use XSLoader;
+
+our $VERSION    = '0.09';
+our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
-eval {
-    require XSLoader;
-    XSLoader::load(__PACKAGE__, $VERSION);
-    1;
-} or do {
-    require DynaLoader;
-    DynaLoader::bootstrap(__PACKAGE__, $VERSION);
-};
-
-use Geo::Distance;
+XSLoader::load(__PACKAGE__, $XS_VERSION);
 
 my ($orig_distance_sub, $orig_formula_sub);
 BEGIN {
@@ -207,7 +202,7 @@ L<http://search.cpan.org/dist/Geo-Distance-XS/>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2009-2010 gray <gray at cpan.org>, all rights reserved.
+Copyright (C) 2009-2011 gray <gray at cpan.org>, all rights reserved.
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

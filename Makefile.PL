@@ -12,7 +12,7 @@ my %conf = (
     BUILD_REQUIRES => { 'Test::More' => 0.82, },
     PREREQ_PM      => {
         'Geo::Distance' => 0.16,
-        'Test::More'    => 0,
+        XSLoader        => 0,
     },
     META_MERGE     => {
         resources => {
@@ -23,7 +23,10 @@ my %conf = (
     clean          => { FILES => 'Geo-Distance-XS-*' },
 );
 
-my $eumm_version=$ExtUtils::MakeMaker::VERSION;
+my $eumm_version =  do {
+    no warnings 'numeric';
+    eval $ExtUtils::MakeMaker::VERSION;
+};
 delete $conf{META_MERGE} if $eumm_version < 6.46;
 $conf{PREREQ_PM} = {
     %{ $conf{PREREQ_PM} || {} }, %{ delete $conf{BUILD_REQUIRES} },
