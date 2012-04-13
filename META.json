@@ -4,7 +4,7 @@
       "gray <gray@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.58, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -27,13 +27,13 @@
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : 0
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "runtime" : {
          "requires" : {
             "Geo::Distance" : "0.16",
-            "XSLoader" : 0
+            "XSLoader" : "0"
          }
       }
    },
@@ -43,5 +43,5 @@
          "url" : "http://github.com/gray/geo-distance-xs"
       }
    },
-   "version" : "0.09"
+   "version" : "0.10"
 }
