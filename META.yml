@@ -22,4 +22,4 @@ requires:
   XSLoader: 0
 resources:
   repository: http://github.com/gray/geo-distance-xs
-version: 0.10
+version: 0.11
