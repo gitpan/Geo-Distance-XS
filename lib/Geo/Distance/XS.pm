@@ -7,7 +7,7 @@ use Carp qw(croak);
 use Geo::Distance;
 use XSLoader;
 
-our $VERSION    = '0.12';
+our $VERSION    = '0.13';
 our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
@@ -19,11 +19,12 @@ BEGIN {
     $orig_formula_sub  = \&Geo::Distance::formula;
 }
 
+my %formulas; @formulas{qw(hsin cos mt tv gcd polar alt)} = (1, 2, 2..6);
+our @FORMULAS = sort keys %formulas;
+
 sub import {
     no warnings qw(redefine);
     no strict qw(refs);
-
-    my %formulas = map { $_ => undef } @{__PACKAGE__.'::FORMULAS'};
 
     *Geo::Distance::distance = \&{__PACKAGE__.'::distance'};
     *Geo::Distance::formula = sub {
@@ -33,6 +34,7 @@ sub import {
             croak "Invalid formula: $formula"
                 unless exists $formulas{$formula};
             $self->{formula} = $formula;
+            $self->{formula_index} = $formulas{$formula};
         }
         return $self->{formula};
     };
